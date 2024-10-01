@@ -1,0 +1,20 @@
+services:
+  moby-db:
+    image: postgres:16.2
+    restart: always
+    container_name: ${DATABASE_NAME}
+    hostname: ${DATABASE_NAME}
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_DEFAULT_NAME}
+    command: ['postgres', '-c', 'wal_level=logical']
+    healthcheck:
+      test: ['CMD', 'psql', '-U', 'postgres', '-c', 'SELECT 1']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./database/scripts:/docker-entrypoint-initdb.d
