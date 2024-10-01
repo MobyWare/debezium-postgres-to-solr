@@ -1,0 +1,24 @@
+{
+    "config": {
+      "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+      "database.dbname": "academic",
+      "database.history.kafka.bootstrap.servers": "broker:9092",
+      "database.history.kafka.topic": "schema-changes.academic",
+      "database.hostname": "moby-db",
+      "database.password": "postgres",
+      "database.port": "5432",
+      "database.server.name": "moby-db",
+      "database.user": "postgres",
+      "plugin.name": "pgoutput",
+      "schema.include.list": "public",
+      "table.include.list": "public.districts,public.schools",
+      "tasks.max": "1",
+      "topic.creation.default.cleanup.policy": "delete",
+      "topic.creation.default.partitions": "1",
+      "topic.creation.default.replication.factor": "1",
+      "topic.creation.default.retention.ms": "604800000",
+      "topic.creation.enable": "true",
+      "topic.prefix": "academic"
+    },
+    "name": "academic-db-connector"
+  }
