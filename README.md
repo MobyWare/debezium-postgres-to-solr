@@ -1,6 +1,8 @@
 # Goal
 I'd like to find a way to pull data from Postgres and dump it to a common schema in solr
 
+![CDC Architecture](./resources/cdc_from_database_to_search.png "Continuous Update of Solr from DB")
+
 # Set up
 
 ### Steps to run
